@@ -1,0 +1,71 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;; code to create temporary environmental variables ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+to set-global-environment
+ set ammonia 1.5          
+ set Calcium 30              
+ set  Hardness 45        
+ set conductivity 60     
+ set DO 12               
+ set chla 6            
+ set salinity 10         
+ set K 72               
+ set current-velocity 6.8
+ set temp 24            
+ set spawn-temp 36   
+ set ph 8.4   
+ ;number-infected? ; user defined number of zebra mussel infected patches set in interface
+ ;number-not-infected?; user defined number of zebra mussel non-infected patches set in interface
+ end
+
+to set-patch-environment
+ set patch-ammonia 1.5          
+ set patch-Calcium 30              
+ set patch-Hardness 45        
+ set patch-conductivity 60     
+ set patch-DO 12               
+ set patch-chla 6            
+ set patch-salinity 10         
+ set patch-K 72               
+ set patch-current-velocity 6.8
+ set patch-temp 24            
+ set patch-spawn-temp 36
+ set patch-ph 8.4
+ set patch-surface-area-SI 10
+end
+
+
+to calculate-parameters-boater
+  set alpha 2.5
+  
+  ask patches with [patch-habitat-type = "water"] [
+    
+  set W 10 ;surface area of waterbody
+  set W-vect []  ;vector of surface areas of the destination location
+  set O number-of-boats ;number of boats at location i
+  set A 0 ;scaling factor for location i
+  set C []
+  set WC-alpha []
+  set T []
+  set C-alpha []
+  set Patch-ID []
+  set R []                                ;number of boats leaving specific water bodies (i)
+  set P []                                ;percentage of all boats traveling to each watershed (j)
+  set percent-surface-area-infected 15 
+  
+  
+ ifelse zebra-mussel? 
+ [set proportion-of-water-infected (W / (percent-surface-area-infected * W))] ;calculates the proportion of water infected by zebra mussels
+ [set proportion-of-water-infected 0]
+ 
+  
+ set Z O * proportion-of-water-infected  ;calculates the number of boats that are infected by zebra mussels
+ 
+                              
+
+ ] 
+
+end
+

@@ -1,0 +1,43 @@
+;#############PURPOSE#######################################
+;####CALCULATE CONSTRAINED GRAVITY MODEL####################
+;###Bossenbrock et al 2007, Bookk from google books#########
+;############################################################
+
+to calculate-constrained-gravity
+   
+    
+ ask patches with [patch-habitat-type = "water"] [
+  ;print word "patchID: " self
+   set C-alpha map [? ^ (- alpha)] C                   ;creates a vector of C^-alpha
+   
+    
+   set WC-alpha (map * W-Vect C-alpha)                 ;creates a vector of W*C^-alpha
+  ; print word "WC: " WC-alpha
+   
+   
+   set A (1 / (sum WC-alpha))                         ;creates a vector of A values
+   ;print word "A: " A 
+
+   set T map [? * (A * O)] WC-alpha                  ;creates a vector of Tij values, where i is the home cell, and j is each destination
+   ;print word "T: " T
+
+   set R map [? * (A * Z)] WC-alpha                  ;calculates number of boats with zebra mussel
+
+   ] ;ask patches
+
+end ;calculate constrained gravity
+
+
+
+to-report max-positions [my-list]                   ;reporter that calculates positions of max items in list
+  let max-value max my-list
+  let indices n-values (length my-list) [?]
+  let indices-and-values map [list ? item ? my-list] indices
+  report map [first ?] filter [item 1 ? = max-value] indices-and-values
+end 
+
+
+
+
+
+

@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" namespace="std, isee">
+            <uses_arrays>1</uses_arrays>
+        </smile>
+        <name>Zebra Mussel_HSI</name>
+        <uuid>f8c28193-1250-484e-941b-e65946aa269d</uuid>
+        <vendor>isee systems, inc.</vendor>
+        <product version="10.0.4" lang="en">STELLA</product>
+    </header>
+    <style>
+        <model font-family="Arial" font-size="9" />
+        <interface font-family="Arial" font-size="9" />
+    </style>
+    <sim_specs method="Euler" time_units="Time">
+        <start>0</start>
+        <stop>10</stop>
+        <dt>1</dt>
+        <isee:analyze_mode>false</isee:analyze_mode>
+    </sim_specs>
+    <dimensions>
+        <dim name="Dim_Name_1" size="1" />
+    </dimensions>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1920" height="1100" />
+        <isee:security />
+        <isee:print_setup width="588" height="768" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <aux name="Am">
+            <eqn>Ammonia_data__time_series</eqn>
+            <display x="264" y="262" color="blue" />
+        </aux>
+        <aux name="Ammonia">
+            <eqn>1 / (1 + 0.03157 * ( EXP(3.2*Am)))</eqn>
+            <display x="283" y="214" color="blue">
+                <scale min="0" max="2" />
+            </display>
+        </aux>
+        <aux name="Ammonia_data_\ntime_series">
+            <eqn>TIME</eqn>
+            <gf>
+                <yscale min="0" max="2" />
+                <xpts>0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10</xpts>
+                <ypts>0,0.10000000000000001,0.20000000000000001,0.29999999999999999,0.40000000000000002,0.5,0.59999999999999998,0.69999999999999996,0.80000000000000004,0.90000000000000002,1,1.1000000000000001,1.2,1.3,1.3999999999999999,1.5,1.6000000000000001,1.7,1.8,1.8999999999999999,2</ypts>
+            </gf>
+            <display x="152" y="190" color="blue" label="Ammonia_data__time_series">
+                <scale min="0" max="2" />
+            </display>
+        </aux>
+        <aux name="Calcium_Suitability_Index">
+            <eqn>Calcium_Suitability_Index_Formula</eqn>
+            <gf>
+                <yscale min="0" max="1" />
+                <xpts>0,4,8,12,16,20,24,28,32,36,40</xpts>
+                <ypts>0,0.01,0.040000000000000001,0.14000000000000001,0.40999999999999998,0.75,0.93000000000000005,0.97999999999999998,1,1,1</ypts>
+            </gf>
+            <display x="285" y="466" color="blue">
+                <scale min="0" max="1" />
+            </display>
+        </aux>
+        <aux name="Ca">
+            <eqn>Calcium_Data__time_series</eqn>
+            <display x="225" y="586" color="blue" />
+        </aux>
+        <aux name="Calcium_Suitability_Index_Formula">
+            <eqn>1 / (1 + 521.334 * ( EXP(-0.368*Ca)))</eqn>
+            <display x="244" y="538" color="blue" />
+        </aux>
+        <aux name="Calcium_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="40" />
+                <xpts>0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10</xpts>
+                <ypts>0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40</ypts>
+            </gf>
+            <display x="113" y="514" color="blue" />
+        </aux>
+        <aux name="TH">
+            <eqn>Total_Hardness_Data__time_series</eqn>
+            <display x="234" y="865" color="blue" />
+        </aux>
+        <aux name="Total_Hardness\nSuitability_Index">
+            <eqn>1 / (1 + 182.967 * ( EXP(-0.0906*TH)))</eqn>
+            <display x="254" y="801" color="blue" />
+        </aux>
+        <aux name="Total_Hardness_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="80" />
+                <xpts>0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10</xpts>
+                <ypts>0,4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80</ypts>
+            </gf>
+            <display x="133" y="817" color="blue" label="Total_Hardness_Data__time_series" />
+        </aux>
+        <aux name="Conductivity">
+            <eqn>Conductivity_Data__time_series</eqn>
+            <display x="240" y="1141" color="blue" />
+        </aux>
+        <aux name="Conductivity\nSuitability_Index">
+            <eqn>1 / (1 + 158.89 * ( EXP(-0.097*Conductivity)))</eqn>
+            <display x="260" y="1077" color="blue" />
+        </aux>
+        <aux name="Conductivity_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="80" />
+                <xpts>0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10</xpts>
+                <ypts>0,4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80</ypts>
+            </gf>
+            <display x="139" y="1093" color="blue" label="Conductivity_Data__time_series" />
+        </aux>
+        <aux name="DO">
+            <eqn>DO_Data__time_series</eqn>
+            <display x="220" y="1459" color="blue" />
+        </aux>
+        <aux name="DO\nSuitability_Index">
+            <eqn>1 / (1 + 6858 * ( EXP(-1.472*DO)))</eqn>
+            <display x="240" y="1395" color="blue" />
+        </aux>
+        <aux name="DO_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="40" />
+                <xpts>0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10</xpts>
+                <ypts>0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40</ypts>
+            </gf>
+            <display x="119" y="1411" color="blue" />
+        </aux>
+        <aux name="Chlorophyll_a">
+            <eqn>Chlorophyll_a_Data__time_series</eqn>
+            <display x="213" y="1761" color="blue" />
+        </aux>
+        <aux name="Chlorophyll_a\nSuitability_Index">
+            <eqn>1 / (1 + 19.6754 * ( EXP(-0.69954*Chlorophyll_a)))</eqn>
+            <display x="233" y="1697" color="blue" />
+        </aux>
+        <aux name="Chlorophyll_a_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="10" />
+                <xpts>0,1,2,3,4,5,6,7,8,9,10</xpts>
+                <ypts>0,1,2,3,4,5,6,7,8,9,10</ypts>
+            </gf>
+            <display x="112" y="1713" color="blue" />
+        </aux>
+        <aux name="Salinity">
+            <eqn>Salinity_Data__time_series</eqn>
+            <display x="215" y="2045" color="blue" />
+        </aux>
+        <aux name="Salinity\nSuitability_Index">
+            <eqn>1 / (1 + 0.001 * ( EXP(0.9585*Salinity)))</eqn>
+            <display x="235" y="1981" color="blue" />
+        </aux>
+        <aux name="Salinity_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="10" />
+                <xpts>0,1,2,3,4,5,6,7,8,9,10</xpts>
+                <ypts>0,1,2,3,4,5,6,7,8,9,10</ypts>
+            </gf>
+            <display x="114" y="1997" color="blue" />
+        </aux>
+        <aux name="Potassium">
+            <eqn>Potassium_Data__time_series</eqn>
+            <display x="225" y="2392" color="blue" />
+        </aux>
+        <aux name="Potassium\nSuitability_Index">
+            <eqn>1 / (1 + 0.00069 * ( EXP(0.1418*Potassium)))</eqn>
+            <display x="245" y="2328" color="blue" />
+        </aux>
+        <aux name="Potassium_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="100" />
+                <xpts>0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10</xpts>
+                <ypts>0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100</ypts>
+            </gf>
+            <display x="124" y="2344" color="blue" />
+        </aux>
+        <aux name="Current_Velocity">
+            <eqn>Current_Velocity_Data__time_series</eqn>
+            <display x="228" y="2701" color="blue" />
+        </aux>
+        <aux name="Current_Velocity\nSuitability_Index">
+            <eqn>1 / (1 + 0.001* ( EXP(4.6045*Current_Velocity)))</eqn>
+            <display x="248" y="2637" color="blue" />
+        </aux>
+        <aux name="Current_Velocity_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="10" />
+                <xpts>0,1,2,3,4,5,6,7,8,9,10</xpts>
+                <ypts>0,1,2,3,4,5,6,7,8,9,10</ypts>
+            </gf>
+            <display x="127" y="2653" color="blue" />
+        </aux>
+        <aux name="Temperature">
+            <eqn>Temperature_Data__time_series</eqn>
+            <display x="224" y="3084" color="blue" />
+        </aux>
+        <aux name="Temperature_\nSuitability_Index">
+            <eqn>if Temperature = 22 then 1 &#x0A;else if Temperature &lt;22 then (1 / (1 + 177517 * ( EXP(-0.863*Temperature)))) &#x0A;else if Temperature &gt; 22 then (1 / (1 + 5.7 * 10^-12 * ( EXP(0.863*Temperature)))) &#x0A;else 0</eqn>
+            <display x="244" y="3020" color="blue" />
+        </aux>
+        <aux name="Temperature_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="40" />
+                <xpts>0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10</xpts>
+                <ypts>0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40</ypts>
+            </gf>
+            <display x="123" y="3036" color="blue" />
+        </aux>
+        <aux name="Spawning_Temperature">
+            <eqn>Spawning_Temperature_Data__time_series</eqn>
+            <display x="218" y="3381" color="blue" />
+        </aux>
+        <aux name="Spawning_Temperature_\nSuitability_Index">
+            <eqn>if Spawning_Temperature = 17 then 1 &#x0A;else if Spawning_Temperature &lt; 17 then  (1 / (1 + 120686.3 * ( EXP(-1.90457 * Spawning_Temperature)))) &#x0A;else if Spawning_Temperature &gt; 17 then (1 / (1 + (8.3 * 10^-12) * ( EXP(1.90457 * Spawning_Temperature)))) &#x0A;else 0</eqn>
+            <display x="252" y="3303" color="blue" />
+        </aux>
+        <aux name="Spawning_Temperature_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="40" />
+                <xpts>0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10</xpts>
+                <ypts>0,2,4,6,8,10,12,14,12.5,18,21.5,22,24,26,28,30,32,34,36,38,40</ypts>
+            </gf>
+            <display x="117" y="3333" color="blue" />
+        </aux>
+        <aux name="Noname_1">
+            <eqn>TIME</eqn>
+            <gf>
+                <yscale min="0" max="100" />
+                <xpts>0,1,2,3,4,5,6,7,8,9,10</xpts>
+                <ypts>10,20,22,5,14,8,17,22,17,19,30</ypts>
+            </gf>
+            <display x="98" y="3116" color="blue" />
+        </aux>
+        <aux name="pH">
+            <eqn>pH_Data__time_series</eqn>
+            <display x="181" y="3737" color="blue" />
+        </aux>
+        <aux name="pH_\nSuitability_Index">
+            <eqn>if pH = 8.5 then 1 &#x0A;else if pH &lt;8.5 then (1 / (1 + 3.121* 10^39 * ( EXP(-11.51*pH)))) &#x0A;else if pH &gt; 8.5 then (1 / (1 + 3.211* 10^-46 * ( EXP(11.51*pH)))) &#x0A;else 0</eqn>
+            <display x="201" y="3673" color="blue" />
+        </aux>
+        <aux name="pH_Data_\ntime_series">
+            <eqn>time</eqn>
+            <gf>
+                <yscale min="0" max="10" />
+                <xpts>0,1,2,3,4,5,6,7,8,9,10</xpts>
+                <ypts>0,1,2,3,4,5,6,7,8,9,10</ypts>
+            </gf>
+            <display x="80" y="3689" color="blue" />
+        </aux>
+        <aux name="Noname_2">
+            <eqn>TIME</eqn>
+            <gf>
+                <yscale min="0" max="10" />
+                <xpts>0,1,2,3,4,5,6,7,8,9,10</xpts>
+                <ypts>2,3,1,5,5,8.5,10,5,3,7,6</ypts>
+            </gf>
+            <display x="73" y="3763" color="blue" />
+        </aux>
+        <aux name="Noname_3">
+            <eqn>TIME</eqn>
+            <gf>
+                <yscale min="0" max="100" />
+                <xpts>0,1,2,3,4,5,6,7,8,9,10</xpts>
+                <ypts>10,20,22,5,14,8,17,21.5,12.5,19,30</ypts>
+            </gf>
+            <display x="108" y="3398" color="blue" />
+        </aux>
+        <aux name="HSI">
+            <eqn>(Calcium_Suitability_Index_Formula*Current_Velocity_Suitability_Index*Spawning_Temperature__Suitability_Index*pH__Suitability_Index*Chlorophyll_a_Suitability_Index*Potassium_Suitability_Index*Salinity_Suitability_Index*DO_Suitability_Index*Temperature__Suitability_Index*Ammonia*Total_Hardness_Suitability_Index*Conductivity_Suitability_Index) ^ 1/12</eqn>
+            <display x="1120" y="486" color="blue" />
+        </aux>
+        <display page_width="588" page_height="768" page_cols="3" page_rows="6" isee:show_values_on_hover="true" isee:converter_size="medium" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" report_every_dt="true">
+            <alias x="1019" y="376" uid="0">
+                <of>Calcium_Suitability_Index_Formula</of>
+            </alias>
+            <connector x="267" y="254" uid="1" color="#FF007F">
+                <from>Am</from>
+                <to>Ammonia</to>
+            </connector>
+            <connector x="244" y="529" uid="2" color="#FF007F">
+                <from>Calcium_Suitability_Index_Formula</from>
+                <to>Calcium_Suitability_Index</to>
+            </connector>
+            <connector x="121" y="519" uid="3" color="#FF007F">
+                <from>Calcium_Data__time_series</from>
+                <to>Ca</to>
+            </connector>
+            <connector x="223" y="1450" uid="4" color="#FF007F">
+                <from>DO</from>
+                <to>DO_Suitability_Index</to>
+            </connector>
+            <connector x="228" y="578" uid="5" color="#FF007F">
+                <from>Ca</from>
+                <to>Calcium_Suitability_Index_Formula</to>
+            </connector>
+            <connector x="120" y="1717" uid="6" color="#FF007F">
+                <from>Chlorophyll_a_Data__time_series</from>
+                <to>Chlorophyll_a</to>
+            </connector>
+            <connector x="160" y="195" uid="7" color="#FF007F">
+                <from>Ammonia_data__time_series</from>
+                <to>Am</to>
+            </connector>
+            <connector x="228" y="2383" uid="8" color="#FF007F">
+                <from>Potassium</from>
+                <to>Potassium_Suitability_Index</to>
+            </connector>
+            <connector x="124" y="3338" uid="9" color="#FF007F">
+                <from>Spawning_Temperature_Data__time_series</from>
+                <to>Spawning_Temperature</to>
+            </connector>
+            <connector x="122" y="2001" uid="10" color="#FF007F">
+                <from>Salinity_Data__time_series</from>
+                <to>Salinity</to>
+            </connector>
+            <connector x="132" y="2348" uid="11" color="#FF007F">
+                <from>Potassium_Data__time_series</from>
+                <to>Potassium</to>
+            </connector>
+            <connector x="237" y="856" uid="12" color="#FF007F">
+                <from>TH</from>
+                <to>Total_Hardness_Suitability_Index</to>
+            </connector>
+            <connector x="218" y="2036" uid="13" color="#FF007F">
+                <from>Salinity</from>
+                <to>Salinity_Suitability_Index</to>
+            </connector>
+            <connector x="86" y="3695" uid="14" color="#FF007F">
+                <from>pH_Data__time_series</from>
+                <to>pH</to>
+            </connector>
+            <connector x="231" y="2692" uid="15" color="#FF007F">
+                <from>Current_Velocity</from>
+                <to>Current_Velocity_Suitability_Index</to>
+            </connector>
+            <connector x="243" y="1132" uid="16" color="#FF007F">
+                <from>Conductivity</from>
+                <to>Conductivity_Suitability_Index</to>
+            </connector>
+            <connector x="127" y="1415" uid="17" color="#FF007F">
+                <from>DO_Data__time_series</from>
+                <to>DO</to>
+            </connector>
+            <connector x="141" y="821" uid="18" color="#FF007F">
+                <from>Total_Hardness_Data__time_series</from>
+                <to>TH</to>
+            </connector>
+            <connector x="135" y="2657" uid="19" color="#FF007F">
+                <from>Current_Velocity_Data__time_series</from>
+                <to>Current_Velocity</to>
+            </connector>
+            <connector x="216" y="1752" uid="20" color="#FF007F">
+                <from>Chlorophyll_a</from>
+                <to>Chlorophyll_a_Suitability_Index</to>
+            </connector>
+            <connector x="184" y="3728" uid="21" color="#FF007F">
+                <from>pH</from>
+                <to>pH__Suitability_Index</to>
+            </connector>
+            <connector x="227" y="3075" uid="22" color="#FF007F">
+                <from>Temperature</from>
+                <to>Temperature__Suitability_Index</to>
+            </connector>
+            <connector x="147" y="1097" uid="23" color="#FF007F">
+                <from>Conductivity_Data__time_series</from>
+                <to>Conductivity</to>
+            </connector>
+            <connector x="129" y="3042" uid="24" color="#FF007F">
+                <from>Temperature_Data__time_series</from>
+                <to>Temperature</to>
+            </connector>
+            <connector x="222" y="3373" uid="25" color="#FF007F">
+                <from>Spawning_Temperature</from>
+                <to>Spawning_Temperature__Suitability_Index</to>
+            </connector>
+            <alias x="1005" y="551" uid="26">
+                <of>pH__Suitability_Index</of>
+            </alias>
+            <alias x="975" y="496" uid="27">
+                <of>Spawning_Temperature__Suitability_Index</of>
+            </alias>
+            <alias x="1285" y="435" uid="28">
+                <of>Temperature__Suitability_Index</of>
+            </alias>
+            <alias x="973" y="436" uid="29">
+                <of>Current_Velocity_Suitability_Index</of>
+            </alias>
+            <alias x="1147" y="582" uid="30">
+                <of>Potassium_Suitability_Index</of>
+            </alias>
+            <alias x="1224" y="559" uid="31">
+                <of>Salinity_Suitability_Index</of>
+            </alias>
+            <alias x="1078" y="564" uid="32">
+                <of>Chlorophyll_a_Suitability_Index</of>
+            </alias>
+            <alias x="1294" y="521" uid="33">
+                <of>DO_Suitability_Index</of>
+            </alias>
+            <alias x="1102" y="374" uid="34">
+                <of>Conductivity_Suitability_Index</of>
+            </alias>
+            <alias x="1190" y="367" uid="35">
+                <of>Total_Hardness_Suitability_Index</of>
+            </alias>
+            <alias x="1253" y="376" uid="36">
+                <of>Ammonia</of>
+            </alias>
+            <connector x="1025" y="383" uid="37" color="#FF007F">
+                <from>
+                    <alias uid="0" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="983" y="435" uid="38" color="#FF007F">
+                <from>
+                    <alias uid="29" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="983" y="500" uid="39" color="#FF007F">
+                <from>
+                    <alias uid="27" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1013" y="550" uid="40" color="#FF007F">
+                <from>
+                    <alias uid="26" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1084" y="557" uid="41" color="#FF007F">
+                <from>
+                    <alias uid="32" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1147" y="574" uid="42" color="#FF007F">
+                <from>
+                    <alias uid="30" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1216" y="554" uid="43" color="#FF007F">
+                <from>
+                    <alias uid="31" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1285" y="519" uid="44" color="#FF007F">
+                <from>
+                    <alias uid="33" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1276" y="438" uid="45" color="#FF007F">
+                <from>
+                    <alias uid="28" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1245" y="380" uid="46" color="#FF007F">
+                <from>
+                    <alias uid="36" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1184" y="373" uid="47" color="#FF007F">
+                <from>
+                    <alias uid="35" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <connector x="1101" y="383" uid="48" color="#FF007F">
+                <from>
+                    <alias uid="34" />
+                </from>
+                <to>HSI</to>
+            </connector>
+            <stacked_container x="380" y="63" height="282" width="492" visible_index="0" uid="49">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Ammonia_data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Ammonia" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="508" y="156" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 1" type="graph" icon_of="49" />
+            <stacked_container height="282" width="492" visible_index="0" uid="50">
+                <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2" from="0" to="10" />
+            </stacked_container>
+            <pad_icon x="559" y="493" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 2" type="graph" icon_of="50" />
+            <stacked_container x="387" y="417" height="282" width="492" visible_index="0" uid="51">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Calcium_Data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Calcium_Suitability_Index_Formula" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="424" y="471" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 3" type="graph" icon_of="51" />
+            <stacked_container height="273" width="492" visible_index="0" uid="52">
+                <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2" from="0" to="10">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Calcium_Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="355" y="430" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 4" type="graph" icon_of="52" />
+            <stacked_container x="348" y="741" height="282" width="492" visible_index="0" uid="53">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Total_Hardness_Data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Total_Hardness_Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="366" y="775" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 5" type="graph" icon_of="53" />
+            <stacked_container x="341" y="1053" height="282" width="492" visible_index="0" uid="54">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Conductivity_Data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Conductivity_Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="383" y="1080" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 6" type="graph" icon_of="54" />
+            <stacked_container x="338" y="1346" height="282" width="492" visible_index="0" uid="55">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="DO_Data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="DO_Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="360" y="1362" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 7" type="graph" icon_of="55" />
+            <stacked_container x="326" y="1651" height="282" width="492" visible_index="0" uid="56">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Chlorophyll_a_Data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Chlorophyll_a_Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="348" y="1667" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 8" type="graph" icon_of="56" />
+            <stacked_container x="366" y="1975" height="282" width="492" visible_index="0" uid="57">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Salinity_Data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Salinity_Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="388" y="1991" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 9" type="graph" icon_of="57" />
+            <stacked_container x="356" y="2304" height="282" width="492" visible_index="0" uid="58">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Potassium_Data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Potassium_Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="428" y="2359" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 10" type="graph" icon_of="58" />
+            <stacked_container x="369" y="2624" height="282" width="492" visible_index="0" uid="59">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Current_Velocity_Data__time_series" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Current_Velocity_Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="391" y="2640" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 11" type="graph" icon_of="59" />
+            <stacked_container x="331" y="2961" height="282" width="492" visible_index="0" uid="60">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Temperature" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Temperature__Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="352" y="2954" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 12" type="graph" icon_of="60" />
+            <stacked_container x="321" y="3275" height="282" width="492" visible_index="0" uid="61">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="blue" precision="0" show_y_axis="true">
+                        <entity name="Spawning_Temperature" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="Spawning_Temperature__Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="350" y="3285" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 13" type="graph" icon_of="61" />
+            <stacked_container x="293" y="3623" height="285" width="521" visible_index="0" uid="62">
+                <graph type="scatter" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="false" isee:use_five_segments="false" isee:date_time="-790700036" time_precision="2">
+                    <plot index="0" pen_width="1" color="fuchsia" precision="0" show_y_axis="true">
+                        <entity name="pH" />
+                    </plot>
+                    <plot index="1" pen_width="1" color="red" precision="0" show_y_axis="true">
+                        <entity name="pH__Suitability_Index" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="346" y="3692" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 14" type="graph" icon_of="62" />
+            <stacked_container height="270" width="475" visible_index="0" uid="63">
+                <table title="Untitled Table" font-size="9" background="#E0E0E0" columns_width="114" orientation="vertical" report_every_dt="true" isee:date_time="-790700036" cleared="true">
+                    <item type="time" color="black" text-align="left" precision="3" width="100" />
+                    <item color="black" text-align="left" precision="2" thousands_separator="true" index="0">
+                        <entity name="Calcium_Data__time_series" />
+                    </item>
+                    <item color="black" text-align="left" precision="2" thousands_separator="true" index="1">
+                        <entity name="Calcium_Suitability_Index_Formula" />
+                    </item>
+                </table>
+            </stacked_container>
+            <pad_icon x="673" y="445" width="26" height="22" color="#008F44" label_side="bottom" label="Table 2" type="table" icon_of="63" />
+            <stacked_container height="322" width="569" visible_index="0" uid="64">
+                <table title="Untitled Table" font-size="9" background="#E0E0E0" columns_width="59" orientation="vertical" report_every_dt="true" isee:date_time="-790700036" cleared="true">
+                    <item type="time" color="black" text-align="left" precision="3" width="100" />
+                    <item color="black" text-align="left" precision="2" thousands_separator="true" index="0">
+                        <entity name="pH" />
+                    </item>
+                    <item color="black" text-align="left" precision="3" thousands_separator="true" index="1">
+                        <entity name="pH__Suitability_Index" />
+                    </item>
+                </table>
+            </stacked_container>
+            <pad_icon x="898" y="3734" width="26" height="22" color="#008F44" label_side="bottom" label="Table 3" type="table" icon_of="64" />
+            <stacked_container height="270" width="475" visible_index="0" uid="65">
+                <table title="Untitled Table" font-size="9" background="#E0E0E0" columns_width="81" orientation="vertical" report_every_dt="true" isee:date_time="-790700036">
+                    <item type="time" color="black" text-align="left" precision="3" width="100" />
+                    <item color="black" text-align="left" precision="3" thousands_separator="true" index="0">
+                        <entity name="HSI" />
+                    </item>
+                </table>
+            </stacked_container>
+            <pad_icon x="1133" y="187" width="26" height="22" color="#008F44" label_side="bottom" label="Table 4" type="table" icon_of="65" />
+        </display>
+        <interface page_width="788" page_height="528">
+            <simulation_delay>0</simulation_delay>
+            <pages />
+        </interface>
+        <popup x="500" y="465" content="50" />
+        <popup x="111" y="321" content="52" />
+        <popup x="911" y="182" content="63" />
+        <popup x="832" y="622" content="64" />
+        <popup x="965" y="136" content="65" />
+    </model>
+</xmile>

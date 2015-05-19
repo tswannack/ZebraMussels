@@ -1,0 +1,57 @@
+;Calculates SI for each variable
+;Equations from Bartell Report
+
+to-report calc-ammoniaSI
+  report (1 / (1 + 0.03157 * (EXP(3.2 * patch-Ammonia))))
+end
+
+to-report calc-calciumSI
+report (1 / (1 + 521.334 * ( EXP(-0.368 * patch-Calcium))))
+end
+
+
+to-report calc-hardnessSI
+report (1 / (1 + 182.967 * ( EXP(-0.0906 * patch-hardness))))
+end
+
+to-report calc-conductivitySI
+report (1 / (1 + 158.89 * ( EXP(-0.097 * patch-Conductivity))))
+ end 
+
+to-report calc-DOSI
+report (1 / (1 + 6858 * ( EXP(-1.472 * patch-DO))))
+end
+
+to-report calc-chlaSI
+report (1 / (1 + 19.6754 * ( EXP(-0.69954 * patch-chla))))
+end
+
+to-report calc-salinitySI
+report (1 / (1 + 0.001 * ( EXP(0.9585 * patch-Salinity))))
+end 
+
+to-report calc-potassiumSI
+report (1 / (1 + 0.00069 * ( EXP(0.1418 * patch-K))))
+end
+
+to-report calc-currentvelocitySI
+report (1 / (1 + 0.001 * ( EXP(4.6045 * patch-Current-Velocity))))
+end
+
+to-report calc-tempSI
+if temp < 22 [report (1 / (1 + 177517 * ( EXP(-0.863 * patch-Temp))))] 
+if temp > 22  [report (1 / (1 + (5.7 * 10 ^ -12) * ( EXP(0.863 * patch-Temp)))) ] 
+if temp = 22 [report 1]
+end
+
+to-report calc-spawntempSI
+if spawn-temp < 17 [report (1 / (1 + 120686.3 * (EXP (-1.90457 * patch-spawn-temp))))] 
+if spawn-temp > 17  [report (1 / (1 + (8.3 * 10 ^ -12) * (EXP (1.90457 * patch-spawn-temp)))) ] 
+if spawn-temp = 22 [report 1]
+end 
+
+to-report calc-phSI
+if pH = 8.5 [report 1] 
+if pH < 8.5 [report (1 / (1 + 3.121 * 10 ^ 39 * (EXP(-11.51 * patch-pH))))]
+if pH > 8.5 [report (1 / (1 + 3.211 * 10 ^ (- 46) * (EXP (11.51 * patch-pH))))] 
+end

@@ -1,0 +1,28 @@
+
+to calculate-most-frequent-destination
+
+
+ask patches with [patch-habitat-type = "water"] [
+;print word "T patch-set: " self
+
+
+let Position-of-max position (max T) T                     ;calculates position of the maximum value in the T vector
+
+let temp-ID item (position-of-max) Patch-ID                ;calculates the position of the patch XY with the max T value
+
+
+ask patch ([pxcor] of temp-ID ) ([pycor] of temp-ID) [     ;counter to keep track of which patch is the most attractive
+  set count-of-max-T count-of-max-T + 1]
+
+
+
+]
+
+
+end ;calculate most frequent destination
+
+
+
+to highlight
+ask patches with [count-of-max-T > 1] [set pcolor yellow]   ;MODIFY later to find maximum
+end

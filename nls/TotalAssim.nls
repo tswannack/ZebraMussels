@@ -1,0 +1,66 @@
+;;##################PURPOSE###############
+;;Calculate daily total gross assimilation (DTGA) by performing Gaussian integration over time
+;;At 3 different times of day, radiation is computed and used to determine assimilation at three different depths of plant
+;;Sources: Best and Boyd, Goudriaan, Teh 2003
+;;verified in Excel 17 March 2015
+;;###########################################################
+;
+;
+;to calc-distance
+;  
+;  set total-water-patches count patches with [patch-habitat-type = "water"]
+;  print word "total water: " total-water-patches
+;  
+; 
+;  
+;  
+;  ask patches with [patch-habitat-type = "water"] [
+;    
+;    print word "patchID: " self
+;    
+;  let numlayer total-water-patches - 1       ;parameter for looping through the total number of patches with water
+;  let calculate-cumulative-distance []   ;vector that holds intermediate distance calculations
+;                                         
+;    
+;  
+;  
+;      while [numlayer != 0] [                                    ;loops through number of patches with water
+;        
+;        ask patches with [patch-habitat-type = "water" and distance myself > 0] [
+;     
+;      
+;           
+;      let test (calculate-patch-distance)                      ;calls calculate distance reporter (in boater behavior.nls) 
+;      
+;      set calculate-cumulative-distance lput (test) calculate-cumulative-distance ;Adds distance b/w 2 patches to vector 
+;                                                                 print word "cumulative distance vector: " calculate-cumulative-distance
+;                                                                 
+;      set cumulative-dist sum calculate-cumulative-distance              ;sums distance accumluated across all patches
+;      
+;      print word "total dist: " cumulative-dist
+;      
+;      set numlayer numlayer - 1                                 ;reduces number of layers
+;      
+;        
+;        
+;        ] ; ask patches with water and distance>0                                                           ;print word "temp-assim: " temp-assim
+;      
+;  ] ;while numlayer !=0 (depth layer loop)
+;
+;                                                                       ;print word "temp-list: " temp-list 
+;
+;               
+;    ;set calculate-cumulative-distance []                  ;resets vector that stores biomass accumulate at each layer 
+;                                                 
+;                                                  ; print word "numlayer: " numlayer
+;                                                 ; print word "cum dist: " calculate-cumulative-distance     
+;     
+;  ] ;ask patches with patch-habitat = water
+;  
+;  
+; 
+; 
+;                                                 
+;                                                 ; print (word "current-patch: "pxcor pycor)
+;
+;end ;calc distance

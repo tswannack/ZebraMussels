@@ -1,0 +1,32 @@
+;Calculates overall HSI for each cell
+;geometric mean is used for overall HSI value
+
+to calculate-HSI
+
+ask patches with [waterbody? = 1 ] [
+
+          
+  ;calls reporters from CalculateEnvironSI.nls to calculate each SI value for each environmental variable
+  
+  set patch-ammonia-SI calc-ammoniaSI
+  set patch-calcium-SI calc-calciumSI
+  set patch-hardness-SI calc-hardnessSI
+  set patch-conductivity-SI calc-conductivitySI
+  set patch-DO-SI calc-DOSI
+  set patch-chla-SI calc-chlaSI
+  set patch-salinity-SI calc-salinitySI
+  set patch-K-SI calc-potassiumSI
+  set patch-temp-SI calc-tempSI
+  set patch-spawn-temp-SI calc-spawntempSI
+  set patch-current-velocity-SI  calc-currentvelocitySI
+  set patch-ph-SI calc-phSI
+ 
+   
+  ;calculates overall HSI value
+  set patch-HSI ((patch-ammonia-SI * patch-calcium-SI * patch-hardness-SI * patch-conductivity-SI * patch-DO-SI * patch-chla-SI * patch-salinity-SI *
+patch-K-SI * patch-temp-SI * patch-spawn-temp-SI * patch-current-velocity-SI)^ (1 / Num-Env-Variables))
+  
+  ]
+
+end
+ 

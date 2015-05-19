@@ -1,0 +1,70 @@
+to logistic-dispersal-setup ;sets up logistic procedure
+  
+  ;at 50% cover, there is a probability of 0.25 that it will disperse
+  ;at 99% cover, there is a probability of 0.99 that it will disperse
+  
+       let X1 99
+       let A1 0.95
+       let X2 10
+       let A2 0.1
+
+ 
+       let D ln (A1 / (1 - A1))
+       let D1 ln (A2 / (1 - A2))
+       set logistic-B (D - D1) / (X1 - X2)
+       set logistic-A D - (logistic-B * X1)
+       
+       
+       ;independently recreated in MS Excel 8 Oct 2014
+       
+end 
+
+to logistic-dispersal
+  
+  
+   ask patches with [patch-habitat-type = "water"] 
+   [
+                                                                  
+     let logistic-Z  exp (logistic-A + (logistic-B * W)) ;calculate probability of boats carrying zebra mussels to new location based on surface area
+     set logistic-Prob (logistic-Z / (1 + logistic-Z))     
+     
+     ;print word "probability of dispersal: " logistic-prob
+     
+   ]
+  
+    
+end
+
+
+;to logistic-dispersal-HQ
+;  
+;  
+;   ask patches with [vegetation? = True] [
+; let x 90                                                        ;x=percent-cover
+; 
+;                                                                 ; print word "percent cover: " x
+;    
+;                                                                 ;calculate probability of dispersal into neighboring cells
+;     let logistic-Z  exp (logistic-A + (logistic-B * x))
+;     set logistic-Prob (logistic-Z / (1 + logistic-Z))           ;calculated probability of dispersal based on biomass in cell
+;    
+;                                                                 ; print word "probability of dispersal: " logistic-prob
+;     
+;    ask neighbors with [ vegetation? = False ]
+;    [
+;      if random-float 1 < logistic-Prob and habitatquality > 0.6
+;        [ set vegetation? True
+;          set current-biomass 0.001
+;          set species [species] of myself
+;          set max-height [max-height] of myself
+;          set plant-height min (list (max-height) (current-biomass * 12)) 
+;          set pcolor green
+;          ]
+;      ];if vegetation <> 1
+;    ];ask neighbors
+;  ;ask patches
+;  
+;  
+;  
+;end
+

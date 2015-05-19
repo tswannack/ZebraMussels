@@ -1,0 +1,30 @@
+to boat-zebe-dispersal
+  ask patches with [patch-habitat-type = "water"] [
+ ; print word "current-patch: " self
+    
+    foreach Patch-ID [
+
+      let Position-of-ID position (?) Patch-ID                     ;calculates position of the maximum value in the T vector
+      ;print word "Position in vector: " Position-of-ID
+
+
+      let temp-ID item (Position-of-ID) Patch-ID                ;calculates the position of the patch XY with the max T value
+       ;print word "Value of item: " Temp-ID
+
+      let temp-R item (Position-of-ID) R             ;calculates the position of the patch XY with the max R value
+      ;print word "Temp-R: " Temp-R
+
+            ask patch ([pxcor] of temp-ID) ([pycor] of temp-ID) [     ;counter to keep track of which patch is the most attractive
+  
+                 set count-infected-boats-arriving count-infected-boats-arriving + temp-R]
+  
+   ] ;foreach patch-ID
+    
+] ;ask patches with water
+
+end
+
+to highlight-infected-boats
+ask patches with [patch-habitat-type = "water" and count-infected-boats-arriving > 0.05 ] [set pcolor orange]   ;MODIFY later to find maximum
+ask patches with [patch-habitat-type = "water" and pcolor = orange] [sprout-zebra-mussels 1 [ set shape "zebra mussel 2" set size 1 set color brown ] ]
+end

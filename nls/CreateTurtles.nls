@@ -1,0 +1,48 @@
+to make-turtles ;creates the turtles and breeds
+  
+ask patches with [patch-habitat-type = "water"] [sprout-boats number-of-boats ] 
+ask boats [set shape "boat" set size 1 set color white  set destination-patch patch-ID ]
+ask patches with [patch-habitat-type = "water" and pcolor = red] [sprout-zebra-mussels 1 [ set shape "zebra mussel" set size 1 set color brown ] ] 
+
+
+end ;to make-turtles
+
+to color-boats                                  ;creates boats of different colors
+ 
+  ask boats [
+    
+    ifelse (pcolor = red or pcolor = orange) [set color magenta + random 2] ;if patch is infected with zebra mussels, it turns the boats yellow
+    [set color black]                                                      ;if patch is not infected, it turns the boats white
+
+  ]
+end ;to color-boats
+
+
+
+
+to set-status
+
+ask patches [
+set pcolor green + (random 4)
+set patch-habitat-type "land" 
+]
+
+
+ask n-of number-infected? patches [
+  set-patch-environment 
+  set patch-habitat-type "water" 
+  set zebra-mussel? True 
+  set pcolor red ]
+
+
+ask n-of number-not-infected? patches with [pcolor != red] [
+  set pcolor blue 
+  set-patch-environment 
+  set patch-habitat-type "water" 
+  set zebra-mussel? False
+
+ask patches with [pcolor = blue or pcolor = red] [set waterbody? 1]
+]
+
+    
+end ;set-status

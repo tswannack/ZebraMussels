@@ -1,0 +1,45 @@
+to import-flow
+
+file-open "map2.txt"
+let i max-pycor
+let j min-pxcor
+while [i >= min-pycor] [
+ repeat 33 [ask patch j i [
+    ifelse file-read = 1
+      [set pcolor white]
+      [set pcolor black]
+    ]
+    set j j + 1
+  ]
+  set i i - 1
+]
+file-close-all
+
+end
+
+;how to identify maximum value among many cells within a loop
+
+start loop 1
+	start loop 2
+    		 set KK (W * (distance myself)) 
+    			 if KK > KK1 [set KK1 KK 
+     			  set KKX pxcor set KKY pycor set KK2 self] ;sets pxcor and pycor for cell with maximum value
+
+
+;     print word "distance * W (KK): " KK
+;     print word "max-distance (KK1): " KK1
+;     print word "Patch with max distance(KK2): " KK2 
+      
+
+	end loop 2
+     set max-WC KK2 ;prints patch ID for cell with Max-WC
+    ;print pxcor kk2 
+    ;set count-of-max-WC of (patch with [pxcor pycor = KK2]) 1 + count-of-max-WC
+    ask patch KKX KKY [set count-of-max-WC count-of-max-WC + 1] ;asks specific patch
+    
+;zeroes out the temp variables
+    set KK 0
+    set KK1 0 
+    set KK2 []
+    set kkX 0
+    set kkY 0

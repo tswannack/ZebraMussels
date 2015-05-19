@@ -1,0 +1,40 @@
+
+;;;;;;;;PROCEDURE TO READ DATA FROM CSV FILES;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;EXAMPLE USES OUTPUT FROM ADH FILE;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+to import-cvs-data.nls [csv-file] ; begin import_csv procedure  
+  
+  file-close                                              ; closes any existing files
+file-open csv-file                                      ; opens file. File name defined in GO procedure
+print file-read-line                                    ; Reads header line and prints to command center (removes header line)
+
+let this-id 1
+
+;  while [ not file-at-end? ]                              ; begins read procedure
+;  [ 
+;    let record turn-line-into-list file-read-line       ; defines 'record' as reporter that will turn CSV into list variable
+;    set this-id item 1 record
+;    ask one-of reefs with [ myID = this-id]   ;  This used to be "ask reef id"
+;    [ 
+;      set salinity-list lput (item 3 record) salinity-list
+;      set depth-list lput (item 2 record) depth-list
+;      set TSS-list lput (item 4 record) TSS-list
+;      set Temp-list lput (item 5 record) Temp-list
+;      set DO-list lput (item 6 record) DO-list 
+;    ]
+;  ]
+
+file-close                                              ; closes file
+
+end ;to import-csv-data procedure 
+
+to-report turn-line-into-list [ new-line ]
+  ; Turn all instances of ,, into ,"",
+  while [member? ",," new-line] [ set new-line replace-item (position ",," new-line) new-line ",\"\"" ]
+  ; Replace commas with spaces
+  while [member? "," new-line] [ set new-line replace-item (position "," new-line) new-line " " ]  
+  ; Add brackets to allow line to treated as a list
+  report read-from-string (word "[ " new-line " ]")
+end ; to-report turn-line-into-list

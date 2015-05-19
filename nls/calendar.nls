@@ -1,0 +1,34 @@
+
+to calendar ; begin calendar procedure                      ;counter to keep track of the day of year
+
+;  set day (day + 1)                                                            
+;  if day = 366 [set year (year + 1)]                        ;define the number of days in a year
+;  if day = 366 [set day 1 ]
+
+
+
+                                                                                    ; counter to keep track of the number of days a.k.a. time
+  set day (day + 1)                                                            
+  if day = 366 [set year (year + 1)]                                                ; define the number of days in a year
+  if day = 366 [set day 1 ]  
+  if day >= 1 and day <= 31 [set month "January"]
+  if day >= 32 and day <= 59 [set month "February"]
+  if day >= 60 and day <= 90 [set month "March"]
+  if day >= 91 and day <= 120 [set month "April"]
+  if day >= 121 and day <= 151 [set month "May"]
+  if day >= 152 and day <= 181 [set month "June"]
+  if day >= 182 and day <= 212 [set month "July"]
+  if day >= 213 and day <= 243 [set month "August"]
+  if day >= 244 and day <= 273 [set month "September"]
+  if day >= 274 and day <= 304 [set month "October"]
+  if day >= 305 and day <= 334 [set month "November"]
+  if day >= 335 and day <= 366 [set month "December"]
+  
+
+                                                             
+  
+end ; to calendar
+  
+  
+  
+

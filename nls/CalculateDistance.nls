@@ -1,0 +1,69 @@
+to calc-distance
+  
+ 
+  let temp-patchID-vector []
+
+  set total-water-patches count patches with [patch-habitat-type = "water"]                       ;counts all patches with water 
+       
+  
+  
+  ask patches with [patch-habitat-type = "water"] [
+    
+    let numlayer total-water-patches - 1                                                        ;sets number of patches to cycle through in the while statement
+    let temp-vector []
+    
+    ;print word "patchID: " self
+    ;set x sum  [distance myself] of patches with [patch-habitat-type = "water" and distance myself > 0]
+    ;let temp-assim 0
+    
+  
+  let calculate-distance []                                                                     ;vector that holds intermediate distance calculations to destination locations (j) from source (i)
+                                         
+    
+   
+      while [numlayer != 0] [                                                                    ;loops through number of patches with water
+         
+      ; print word "numlayer 1: " numlayer
+        ask patches with [patch-habitat-type = "water" and distance myself > 0] [
+        ;print word "current patch: " self
+  
+        set temp-vector lput (W) temp-vector                                                      ;adds the Wj value to the current cell
+        ;print word "Temp-Vect: " temp-vector
+     
+      set temp-patchID-vector lput (self) temp-patchID-vector                                     ;adds the patch coordinates from cell j to a vector in current cell
+;      print (word "current-patch Setting Patch ID: " self) 
+;      print word "temp Patch ID vector: " temp-patchID-vector
+  
+      
+      set calculate-distance lput (distance myself) calculate-distance                              ;Adds distance b/w 2 patches to vector 
+      ;set calculate-cumulative-distance lput (test) calculate-cumulative-distance                  ;Adds distance b/w 2 patches to vector 
+      ;print word "distance: " calculate-distance
+     
+
+    set numlayer numlayer - 1                                                                        ;reduces number of layers
+   
+  
+        ] ; ask patches with water and distance>0                                                           
+      
+  ] ;while numlayer !=0 (distance calculation loop)
+     
+    
+     set C calculate-distance                                                                      ;sets patch variable C
+    ; print word "C: " C
+    
+    set W-vect temp-vector                                                                         ;sets patch variable W
+    ;print word "W-vect: " W-vect
+    
+    set Patch-ID temp-patchID-vector ;                                                            sets patch variable Patch ID
+  ;  print word "Patch ID vector: " Patch-ID
+    set temp-patchID-vector []
+     
+     
+        
+] ;ask patches with patch-habitat = water
+  
+  
+                               
+end ;calc distance
+
+
