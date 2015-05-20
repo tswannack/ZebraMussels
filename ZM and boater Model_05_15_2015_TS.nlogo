@@ -15,6 +15,7 @@ __includes
   "nls/import-cvs-data.nls"
   "nls/calendar.nls"             ;calendar module
   "nls/createturtles.nls"        ;creates turtles and breeds
+  "nls/Output.nls"               ;creates output file
  ]
 
 breed [zebra-mussels zebra-mussel]
@@ -47,22 +48,11 @@ to setup
   boat-zebe-dispersal
   highlight-infected-boats
   bitmap:export bitmap:from-view "Screenshot"  ; takes a screenshot of the view, bitmap file named Screenshot, quality of image is better this way. 
+  print-output
   ;highlight
 ; print timer
  
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Print some debugging       ;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
-  
-  if file-exists? "TestOutput-ZM.csv"   [ file-delete "TestOutput-ZM.csv" ]
-  file-open "TestOutput-ZM.csv"
-  file-print (word "output")
-  ask patches [
-       file-write (word pxcor " " pycor " " patch-elevation " "  patch-salinity " " patch-TSS )
-  ]
-  file-close
- ; Show "done" ;TELLS YOU WHEN DATA ARE FINISHED OUTPUTTING   
-  import-csv-data "Inputs ZM/ZM1985_reefavgday USE.csv"     
+ 
   reset-ticks
   reset-timer
   
@@ -94,8 +84,10 @@ to update-infected-status; begin updating boat infected status
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  
   ifelse one-of r > 0.1 [set boat-r max r ][set boat-r 0]
-    ask boats [set destination-patch one-of patch-id]
-    ask boats [move-to destination-patch]
+    ask boats [set destination-patch one-of patch-id 
+      move-to destination-patch]
+  
+   ; ask boats [move-to destination-patch]
 
 end; end updating infected status
 

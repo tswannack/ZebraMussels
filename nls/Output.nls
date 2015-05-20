@@ -1,0 +1,19 @@
+to print-output
+  
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Print some debugging       ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+  
+  if file-exists? "TestOutput-ZM.csv"   [ file-delete "TestOutput-ZM.csv" ]
+  file-open "TestOutput-ZM.csv"
+  file-print (word "output")
+  ask patches [
+       file-write (word pxcor " " pycor " " patch-elevation " "  patch-salinity " " patch-TSS )
+  ]
+  file-close
+
+ ; Show "done" ;TELLS YOU WHEN DATA ARE FINISHED OUTPUTTING   
+  import-csv-data "Inputs ZM/ZM1985_reefavgday USE.csv"     
+  
+  
+end ;print output
