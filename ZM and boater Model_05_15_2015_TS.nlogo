@@ -25,7 +25,7 @@ breed [zebra-mussels zebra-mussel]
 
 breed [boats boat]
  
-
+set sail boats
 
 to setup
                                      
