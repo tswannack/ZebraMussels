@@ -20,10 +20,6 @@ __includes
 
 breed [zebra-mussels zebra-mussel]
 
-;test test Git hub test
-;test test again
-
-
 breed [boats boat]
  
 
@@ -48,7 +44,7 @@ to setup
   boat-zebe-dispersal
   highlight-infected-boats
   bitmap:export bitmap:from-view "Screenshot"  ; takes a screenshot of the view, bitmap file named Screenshot, quality of image is better this way. 
-  print-output
+  ;print-output
   ;highlight
 ; print timer
  
@@ -68,6 +64,7 @@ to go
   move
   color-boats                               ;consolidated this code into a procedure in CreateTurtles.nls
   calculate-hsi
+  
   
   if year > years-to-simulate [stop]         ; just sets the number of years to simulate, user defined on interface
   

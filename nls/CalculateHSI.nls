@@ -3,7 +3,7 @@
 
 to calculate-HSI
 
-ask patches with [waterbody? = 1 ] [
+ask patches with [patch-habitat-type = "water" ] [
 
           
   ;calls reporters from CalculateEnvironSI.nls to calculate each SI value for each environmental variable
@@ -24,7 +24,7 @@ ask patches with [waterbody? = 1 ] [
    
   ;calculates overall HSI value
   set patch-HSI ((patch-ammonia-SI * patch-calcium-SI * patch-hardness-SI * patch-conductivity-SI * patch-DO-SI * patch-chla-SI * patch-salinity-SI *
-patch-K-SI * patch-temp-SI * patch-spawn-temp-SI * patch-current-velocity-SI)^ (1 / Num-Env-Variables))
+  patch-K-SI * patch-temp-SI * patch-spawn-temp-SI * patch-current-velocity-SI)^ (1 / Num-Env-Variables))
   
   ]
 
