@@ -278,31 +278,31 @@ NIL
 HORIZONTAL
 
 TEXTBOX
-37
-691
-539
-747
-if tox < tox1 and tox-duration < 7 and age >= 0 and age < 100 and rand-num <= probability1 then die 
+6
+684
+594
+740
+if Ammonia < Ammonia1 and Ammonia-duration < 7 and age >= 0 and age < 100 and rand-num <= probability1 then die 
 11
 0.0
 1
 
 TEXTBOX
-37
-788
-551
-844
-if tox < tox1 and tox-duration >= 7 and age >= 0 and age < 100 and rand-num <= probability1b then die
+6
+781
+606
+837
+if Ammonia < Ammonia1 and Ammonia-duration >= 7 and age >= 0 and age < 100 and rand-num <= probability1b then die
 11
 0.0
 1
 
 TEXTBOX
-34
-890
-635
-960
-if tox >= tox1 and tox <= tox2 and tox-duration < 12 and age >= 0 and age < 100 and rand-num <= probability2 then die 
+3
+883
+611
+953
+if Ammonia >= Ammonia1 and Ammonia <= Ammonia2 and Ammonia-duration < 12 and age >= 0 and age < 100 and rand-num <= probability2 then die 
 11
 0.0
 1
@@ -312,7 +312,7 @@ TEXTBOX
 991
 648
 1061
-if tox >= tox1 and tox <= tox2 and tox-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability2b then die 
+if Ammonia >= Ammonia1 and Ammonia <= Ammonia2 and Ammonia-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability2b then die 
 11
 0.0
 1
@@ -322,7 +322,7 @@ TEXTBOX
 1084
 627
 1154
-if tox > tox2 and tox <= tox3 and tox-duration < 12 and age >= 0 and age < 100 and rand-num <= probability3 then die
+if Ammonia > Ammonia2 and Ammonia <= Ammonia3 and Ammonia-duration < 12 and age >= 0 and age < 100 and rand-num <= probability3 then die
 11
 0.0
 1
@@ -332,7 +332,7 @@ TEXTBOX
 1181
 641
 1251
-if tox > tox2 and tox <= tox3 and tox-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability3b then die
+if Ammonia > Ammonia2 and Ammonia <= Ammonia3 and Ammonia-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability3b then die
 11
 0.0
 1
@@ -342,7 +342,7 @@ TEXTBOX
 1275
 625
 1345
-if tox > tox3 and tox <= tox4 and tox-duration < 12 and age >= 0 and age < 100 and rand-num <= probability4 then die
+if Ammonia > Ammonia3 and Ammonia <= Ammonia4 and Ammonia-duration < 12 and age >= 0 and age < 100 and rand-num <= probability4 then die
 11
 0.0
 1
@@ -352,7 +352,7 @@ TEXTBOX
 1404
 649
 1474
-if tox > tox3 and tox <= tox4 and tox-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability4b then die
+if Ammonia > Ammonia3 and Ammonia <= Ammonia4 and Ammonia-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability4b then die
 11
 0.0
 1
@@ -362,7 +362,7 @@ TEXTBOX
 1510
 635
 1580
-if tox > tox4 and tox <= tox5 and tox-duration < 12 and age >= 0 and age < 100 and rand-num <= probability5 then die
+if Ammonia > Ammonia4 and Ammonia <= Ammonia5 and Ammonia-duration < 12 and age >= 0 and age < 100 and rand-num <= probability5 then die
 11
 0.0
 1
@@ -372,7 +372,7 @@ TEXTBOX
 1622
 652
 1692
-if tox > tox4 and tox <= tox5 and tox-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability5b then die
+if Ammonia > Ammonia4 and Ammonia <= Ammonia5 and Ammonia-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability5b then die
 11
 0.0
 1
@@ -382,7 +382,7 @@ TEXTBOX
 1740
 482
 1782
-if tox > tox5 and tox-duration < 12 and rand-num <= tox6-probability then die
+if Ammonia > Ammonia5 and Ammonia-duration < 12 and rand-num <= Ammonia6-probability then die
 11
 0.0
 1
@@ -392,7 +392,7 @@ TEXTBOX
 1853
 506
 1895
-if tox > tox5 and tox-duration >= 12 and rand-num <= tox6-probabilityb then die
+if Ammonia > Ammonia5 and Ammonia-duration >= 12 and rand-num <= Ammonia6-probabilityb then die
 11
 0.0
 1
@@ -402,8 +402,8 @@ SLIDER
 718
 282
 751
-tox1
-tox1
+Ammonia1
+Ammonia1
 0
 10
 5
@@ -417,7 +417,7 @@ INPUTBOX
 718
 406
 778
-tox1-probability
+Ammonia1-probability
 0
 1
 0
@@ -428,7 +428,7 @@ INPUTBOX
 812
 409
 872
-tox1-probabilityb
+Ammonia1-probabilityb
 0
 1
 0
@@ -439,8 +439,8 @@ SLIDER
 919
 280
 952
-tox2
-tox2
+Ammonia2
+Ammonia2
 0
 15
 10
@@ -454,7 +454,7 @@ INPUTBOX
 918
 405
 978
-tox2-probability
+Ammonia2-probability
 0
 1
 0
@@ -465,7 +465,7 @@ INPUTBOX
 1013
 409
 1073
-tox2-probabilityb
+Ammonia2-probabilityb
 0
 1
 0
@@ -476,7 +476,7 @@ INPUTBOX
 1106
 408
 1166
-tox3-probability
+Ammonia3-probability
 0
 1
 0
@@ -487,8 +487,8 @@ SLIDER
 1113
 280
 1146
-tox3
-tox3
+Ammonia3
+Ammonia3
 0
 25
 20
@@ -502,7 +502,7 @@ INPUTBOX
 1204
 413
 1264
-tox3-probabilityb
+Ammonia3-probabilityb
 0
 1
 0
@@ -513,8 +513,8 @@ SLIDER
 1305
 280
 1338
-tox4
-tox4
+Ammonia4
+Ammonia4
 0
 30
 25
@@ -528,7 +528,7 @@ INPUTBOX
 1297
 412
 1357
-tox4-probability
+Ammonia4-probability
 0
 1
 0
@@ -539,7 +539,7 @@ INPUTBOX
 1434
 418
 1494
-tox4-probabilityb
+Ammonia4-probabilityb
 0
 1
 0
@@ -550,7 +550,7 @@ INPUTBOX
 1541
 417
 1601
-tox5-probability
+Ammonia5-probability
 0
 1
 0
@@ -561,8 +561,8 @@ SLIDER
 1538
 280
 1571
-tox5
-tox5
+Ammonia5
+Ammonia5
 0
 40
 30
@@ -576,7 +576,7 @@ INPUTBOX
 1653
 422
 1713
-tox5-probabilityb
+Ammonia5-probabilityb
 0
 1
 0
@@ -587,7 +587,7 @@ INPUTBOX
 1771
 420
 1831
-tox6-probability
+Ammonia6-probability
 0
 1
 0
@@ -598,7 +598,7 @@ INPUTBOX
 1880
 425
 1940
-tox6-probabilityb
+Ammonia6-probabilityb
 0
 1
 0
@@ -627,9 +627,9 @@ if Temp < Temp1 and Temp-duration >= 7 and age >= 0 and age < 100 and rand-num <
 TEXTBOX
 744
 886
-1385
+1399
 956
-if Temp >= Temp1 and tox <= Temp2 and Temp-duration < 12 and age >= 0 and age < 100 and rand-num <= probability2 then die 
+if Temp >= Temp1 and Temp <= Temp2 and Temp-duration < 12 and age >= 0 and age < 100 and rand-num <= probability2 then die 
 11
 0.0
 1
@@ -905,6 +905,312 @@ INPUTBOX
 1187
 1637
 Temp6-probability
+0
+1
+0
+Number
+
+TEXTBOX
+1504
+689
+1900
+759
+if Salinity < Salinity1 and Salinity-duration < 7 and age >= 0 and age < 100 and rand-num <= probability1 then die 
+11
+0.0
+1
+
+TEXTBOX
+1505
+791
+1883
+861
+if Salinity < Salinity1 and Salinity-duration >= 7 and age >= 0 and age < 100 and rand-num <= probability1b then die
+11
+0.0
+1
+
+TEXTBOX
+1504
+888
+1902
+958
+if Salinity >= Salinity1 and Salinity <= Salinity2 and Salinity-duration < 12 and age >= 0 and age < 100 and rand-num <= probability2 then die 
+11
+0.0
+1
+
+TEXTBOX
+1508
+979
+1910
+1049
+if Salinity >= Salinity1 and Salinity <= Salinity2 and Salinity-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability2b then die
+11
+0.0
+1
+
+TEXTBOX
+1508
+1066
+1897
+1136
+if Salinity > Salinity2 and Salinity <= Salinity3 and Salinity-duration < 12 and age >= 0 and age < 100 and rand-num <= probability3 then die
+11
+0.0
+1
+
+TEXTBOX
+1509
+1140
+1891
+1210
+if Salinity > Salinity2 and Salinity <= Salinity3 and Salinity-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability3b then die
+11
+0.0
+1
+
+TEXTBOX
+1509
+1221
+1880
+1291
+if Salinity > Salinity3 and Salinity <= Salinity4 and Salinity-duration < 12 and age >= 0 and age < 100 and rand-num <= probability4 then die
+11
+0.0
+1
+
+TEXTBOX
+1509
+1301
+1885
+1371
+if Salinity > Salinity3 and Salinity <= Salinity4 and Salinity-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability4b then die
+11
+0.0
+1
+
+TEXTBOX
+1498
+1381
+1920
+1451
+if Salinity > Salinity4 and Salinity <= Salinity5 and Salinity-duration < 12 and age >= 0 and age < 100 and rand-num <= probability5 then die
+11
+0.0
+1
+
+TEXTBOX
+1499
+1470
+1915
+1540
+if Salinity > Salinity4 and Salinity <= Salinity5 and Salinity-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability5b then die
+11
+0.0
+1
+
+TEXTBOX
+1497
+1564
+1871
+1606
+if Salinity > Salinity5 and age >= 0 and rand-num <= probability6 then die
+11
+0.0
+1
+
+SLIDER
+1527
+729
+1699
+762
+Salinity1
+Salinity1
+0
+10
+10
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1529
+922
+1701
+955
+Salinity2
+Salinity2
+0
+10
+10
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1532
+1095
+1704
+1128
+Salinity3
+Salinity3
+0
+10
+10
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1535
+1251
+1707
+1284
+Salinity4
+Salinity4
+0
+10
+10
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1537
+1414
+1709
+1447
+Salinity5
+Salinity5
+0
+10
+10
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+1749
+1585
+1848
+1645
+Salinity6-probability
+0
+1
+0
+Number
+
+INPUTBOX
+1747
+1501
+1851
+1561
+Salinity5-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1743
+1410
+1850
+1470
+Salinity5-probability
+0
+1
+0
+Number
+
+INPUTBOX
+1739
+1324
+1853
+1384
+Salinity4-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1740
+1246
+1848
+1306
+Salinity4-probability
+0
+1
+0
+Number
+
+INPUTBOX
+1737
+1164
+1849
+1224
+Salinity3-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1739
+1082
+1846
+1142
+Salinity3-probability
+0
+1
+0
+Number
+
+INPUTBOX
+1740
+1005
+1854
+1065
+Salinity2-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1743
+918
+1850
+978
+Salinity2-probability
+0
+1
+0
+Number
+
+INPUTBOX
+1739
+821
+1854
+881
+Salinity1-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1741
+718
+1848
+778
+Salinity1-probability
 0
 1
 0
