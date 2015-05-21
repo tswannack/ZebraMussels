@@ -76,6 +76,8 @@ to go
   updater
   ask boats [update-infected-status]
   move
+  boat-zebe-dispersal
+  highlight-infected-boats
   color-boats                               ;consolidated this code into a procedure in CreateTurtles.nls
   calculate-hsi
   
