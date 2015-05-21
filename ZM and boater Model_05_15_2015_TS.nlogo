@@ -15,10 +15,13 @@ __includes
   "nls/import-cvs-data.nls"
   "nls/calendar.nls"             ;calendar module
   "nls/createturtles.nls"        ;creates turtles and breeds
-  "nls/Output.nls"               ;creates output file
  ]
 
 breed [zebra-mussels zebra-mussel]
+
+;test test Git hub test
+;test test again
+
 
 breed [boats boat]
  
@@ -44,11 +47,22 @@ to setup
   boat-zebe-dispersal
   highlight-infected-boats
   bitmap:export bitmap:from-view "Screenshot"  ; takes a screenshot of the view, bitmap file named Screenshot, quality of image is better this way. 
-  ;print-output
   ;highlight
 ; print timer
  
- 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Print some debugging       ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+  
+  if file-exists? "TestOutput-ZM.csv"   [ file-delete "TestOutput-ZM.csv" ]
+  file-open "TestOutput-ZM.csv"
+  file-print (word "output")
+  ask patches [
+       file-write (word pxcor " " pycor " " patch-elevation " "  patch-salinity " " patch-TSS )
+  ]
+  file-close
+ ; Show "done" ;TELLS YOU WHEN DATA ARE FINISHED OUTPUTTING   
+  import-csv-data "Inputs ZM/ZM1985_reefavgday USE.csv"     
   reset-ticks
   reset-timer
   
@@ -67,7 +81,6 @@ to go
   color-boats                               ;consolidated this code into a procedure in CreateTurtles.nls
   calculate-hsi
   
-  
   if year > years-to-simulate [stop]         ; just sets the number of years to simulate, user defined on interface
   
 end ;go
@@ -83,10 +96,8 @@ to update-infected-status; begin updating boat infected status
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  
   ifelse one-of r > 0.1 [set boat-r max r ][set boat-r 0]
-    ask boats [set destination-patch one-of patch-id 
-      move-to destination-patch]
-  
-   ; ask boats [move-to destination-patch]
+    ask boats [set destination-patch one-of patch-id]
+    ask boats [move-to destination-patch]
 
 end; end updating infected status
 
@@ -111,7 +122,7 @@ end ; end updater
 
   
 to count-neighbors
- set total-neighbor-state count (neighbors with [N? = True]) 
+ set total-neighbor-state count (neighbors with [pcolor = orange or pcolor = red]) 
   
 end ;count neighbors
 
@@ -265,6 +276,639 @@ years-to-simulate
 1
 NIL
 HORIZONTAL
+
+TEXTBOX
+37
+691
+539
+747
+if tox < tox1 and tox-duration < 7 and age >= 0 and age < 100 and rand-num <= probability1 then die 
+11
+0.0
+1
+
+TEXTBOX
+37
+788
+551
+844
+if tox < tox1 and tox-duration >= 7 and age >= 0 and age < 100 and rand-num <= probability1b then die
+11
+0.0
+1
+
+TEXTBOX
+34
+890
+635
+960
+if tox >= tox1 and tox <= tox2 and tox-duration < 12 and age >= 0 and age < 100 and rand-num <= probability2 then die 
+11
+0.0
+1
+
+TEXTBOX
+32
+991
+648
+1061
+if tox >= tox1 and tox <= tox2 and tox-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability2b then die 
+11
+0.0
+1
+
+TEXTBOX
+34
+1084
+627
+1154
+if tox > tox2 and tox <= tox3 and tox-duration < 12 and age >= 0 and age < 100 and rand-num <= probability3 then die
+11
+0.0
+1
+
+TEXTBOX
+33
+1181
+641
+1251
+if tox > tox2 and tox <= tox3 and tox-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability3b then die
+11
+0.0
+1
+
+TEXTBOX
+35
+1275
+625
+1345
+if tox > tox3 and tox <= tox4 and tox-duration < 12 and age >= 0 and age < 100 and rand-num <= probability4 then die
+11
+0.0
+1
+
+TEXTBOX
+45
+1404
+649
+1474
+if tox > tox3 and tox <= tox4 and tox-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability4b then die
+11
+0.0
+1
+
+TEXTBOX
+44
+1510
+635
+1580
+if tox > tox4 and tox <= tox5 and tox-duration < 12 and age >= 0 and age < 100 and rand-num <= probability5 then die
+11
+0.0
+1
+
+TEXTBOX
+44
+1622
+652
+1692
+if tox > tox4 and tox <= tox5 and tox-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability5b then die
+11
+0.0
+1
+
+TEXTBOX
+99
+1740
+482
+1782
+if tox > tox5 and tox-duration < 12 and rand-num <= tox6-probability then die
+11
+0.0
+1
+
+TEXTBOX
+98
+1853
+506
+1895
+if tox > tox5 and tox-duration >= 12 and rand-num <= tox6-probabilityb then die
+11
+0.0
+1
+
+SLIDER
+110
+718
+282
+751
+tox1
+tox1
+0
+10
+5
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+319
+718
+406
+778
+tox1-probability
+0
+1
+0
+Number
+
+INPUTBOX
+317
+812
+409
+872
+tox1-probabilityb
+0
+1
+0
+Number
+
+SLIDER
+108
+919
+280
+952
+tox2
+tox2
+0
+15
+10
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+320
+918
+405
+978
+tox2-probability
+0
+1
+0
+Number
+
+INPUTBOX
+318
+1013
+409
+1073
+tox2-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+322
+1106
+408
+1166
+tox3-probability
+0
+1
+0
+Number
+
+SLIDER
+108
+1113
+280
+1146
+tox3
+tox3
+0
+25
+20
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+320
+1204
+413
+1264
+tox3-probabilityb
+0
+1
+0
+Number
+
+SLIDER
+108
+1305
+280
+1338
+tox4
+tox4
+0
+30
+25
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+325
+1297
+412
+1357
+tox4-probability
+0
+1
+0
+Number
+
+INPUTBOX
+325
+1434
+418
+1494
+tox4-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+330
+1541
+417
+1601
+tox5-probability
+0
+1
+0
+Number
+
+SLIDER
+108
+1538
+280
+1571
+tox5
+tox5
+0
+40
+30
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+329
+1653
+422
+1713
+tox5-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+333
+1771
+420
+1831
+tox6-probability
+0
+1
+0
+Number
+
+INPUTBOX
+332
+1880
+425
+1940
+tox6-probabilityb
+0
+1
+0
+Number
+
+TEXTBOX
+743
+691
+1273
+761
+if Temp < Temp1 and Temp-duration < 7 and age >= 0 and age < 100 and rand-num <= probability1 then die 
+11
+0.0
+1
+
+TEXTBOX
+743
+793
+1289
+863
+if Temp < Temp1 and Temp-duration >= 7 and age >= 0 and age < 100 and rand-num <= probability1b then die
+11
+0.0
+1
+
+TEXTBOX
+744
+886
+1385
+956
+if Temp >= Temp1 and tox <= Temp2 and Temp-duration < 12 and age >= 0 and age < 100 and rand-num <= probability2 then die 
+11
+0.0
+1
+
+TEXTBOX
+743
+981
+1407
+1051
+if Temp >= Temp1 and Temp <= Temp2 and Temp-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability2b then die
+11
+0.0
+1
+
+TEXTBOX
+743
+1065
+1384
+1135
+if Temp > Temp2 and Temp <= Temp3 and Temp-duration < 12 and age >= 0 and age < 100 and rand-num <= probability3 then die
+11
+0.0
+1
+
+TEXTBOX
+746
+1141
+1401
+1211
+if Temp > Temp2 and Temp <= Temp3 and Temp-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability3b then die
+11
+0.0
+1
+
+TEXTBOX
+745
+1220
+1387
+1290
+if Temp > Temp3 and Temp <= Temp4 and Temp-duration < 12 and age >= 0 and age < 100 and rand-num <= probability4 then die
+11
+0.0
+1
+
+TEXTBOX
+744
+1300
+1406
+1370
+if Temp > Temp3 and Temp <= Temp4 and Temp-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability4b then die
+11
+0.0
+1
+
+TEXTBOX
+745
+1382
+1389
+1452
+if Temp > Temp4 and Temp <= Temp5 and Temp-duration < 12 and age >= 0 and age < 100 and rand-num <= probability5 then die
+11
+0.0
+1
+
+TEXTBOX
+743
+1470
+1404
+1540
+if Temp > Temp4 and Temp <= Temp5 and Temp-duration >= 12 and age >= 0 and age < 100 and rand-num <= probability5b then die
+11
+0.0
+1
+
+TEXTBOX
+815
+1555
+1159
+1597
+if Temp > Temp5 and age >= 0 and rand-num <= probability6 then die
+11
+0.0
+1
+
+INPUTBOX
+1079
+716
+1181
+776
+Temp1-probability
+0
+1
+0
+Number
+
+SLIDER
+815
+721
+987
+754
+Temp1
+Temp1
+0
+10
+4
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+1078
+818
+1186
+878
+Temp1-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1081
+910
+1182
+970
+Temp2-probability
+0
+1
+0
+Number
+
+SLIDER
+816
+912
+988
+945
+Temp2
+Temp2
+0
+10
+8
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+1079
+1001
+1184
+1061
+Temp2-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1083
+1081
+1184
+1141
+Temp3-probability
+0
+1
+0
+Number
+
+SLIDER
+821
+1087
+993
+1120
+Temp3
+Temp3
+0
+15
+10
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+1083
+1160
+1188
+1220
+Temp3-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1085
+1237
+1185
+1297
+Temp4-probability
+0
+1
+0
+Number
+
+SLIDER
+822
+1239
+994
+1272
+Temp4
+Temp4
+0
+25
+20
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+1084
+1320
+1189
+1380
+Temp4-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1085
+1406
+1188
+1466
+Temp5-probability
+0
+1
+0
+Number
+
+SLIDER
+821
+1408
+993
+1441
+Temp5
+Temp5
+0
+40
+32
+1
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+1084
+1488
+1189
+1548
+Temp5-probabilityb
+0
+1
+0
+Number
+
+INPUTBOX
+1088
+1577
+1187
+1637
+Temp6-probability
+0
+1
+0
+Number
 
 @#$#@#$#@
 ## WHAT IS IT?
